@@ -25,13 +25,24 @@ export class UserService {
       raw: true,
     });
     if (!data) {
-      await User.create({
-        ...options,
-      });
       return {
-        token: await this.jwt.sign(options),
-      };
+        code: 1,
+        msg: "账号不存在"
+      }
+      // await User.create({
+      //   ...options,
+      // });
+      // return {
+      //   token: await this.jwt.sign(options),
+      // };
     } else {
+      console.log("options.password !== data.password::", options.password !== data.password)
+      if (options.password !== data.password) {
+        return {
+          code: 1,
+          msg: "用户密码错误，请重新输入！"
+        }
+      }
       return {
         token: await this.jwt.sign(options),
         code: 0,

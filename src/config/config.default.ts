@@ -33,7 +33,7 @@ export default (appInfo: EggAppInfo) => {
     csrf: {
       enable: true,
     },
-    domainWhiteList: ['http://10.0.8.6:7002', 'http://127.0.0.1:3000'], // 容许跨域的域名
+    domainWhiteList: ['http://127.0.0.1:3000'], // 容许跨域的域名
   };
 
   return config;
@@ -47,9 +47,10 @@ export const cors = {
 export const sequelize = {
   options: {
     database: 'datas',
-    username: 'root',
-    password: '123456',
-    host: '10.0.8.6',
+    username: 'vt',
+    password: 'lzh123456',
+    // host: '10.0.8.6', // 公司网络
+    host: '127.0.0.1',
     port: '3306',
     encrypt: false,
     dialect: 'mysql',
